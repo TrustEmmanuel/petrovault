@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", ui-monospace, Consolas, monospace;
+}
+
+html {
+  background: #f3f4f6;
+  color: #18181b;
+  font-family: var(--font-sans);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes panel {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 180ms ease-out;
+}
+
+.fade {
+  animation: fade 140ms ease-out;
+}
+
+.panel {
+  animation: panel 160ms ease-out;
+}
+
+.mesh {
+  background-color: #101114;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .ticket-sheet,
+  .ticket-sheet * {
+    visibility: visible;
+  }
+
+  .ticket-sheet {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    background: white;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .fade,
+  .panel {
+    animation: none;
+  }
+}
+
+::selection {
+  background: #e4e4e7;
+}
